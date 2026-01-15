@@ -14,6 +14,8 @@ node1.next = node2
 node2.next = node3
 node3.next = node4
 
+node= Node(5)
+
 def printLinkedList(head):
     while head:
         print(head.value)
@@ -32,9 +34,12 @@ def searchNode(head, value):
 
 def insertNodeAtStart(head, value):
     node = Node(value)
+    if head is None:
+        return node
     node.next = head
     head = node
     printLinkedList(head)
+    return head
 print("After Inserting Node at Start:")
 insertNodeAtStart(node1, 0)
 
@@ -50,7 +55,7 @@ def insertNodeAtEnd(head, value):
 
     head.next= node
     head = temp
-    printLinkedList(head)
+    return head
 
 print("After Inserting Node at End:")
 insertNodeAtEnd(node1, 5)
@@ -79,13 +84,21 @@ insertNodeAtSpecificPos(node1, 10, 8)
 
 def deleteNodeAtStart(head):
 
-    head = head.next
-    printLinkedList(head)
+    if head is None:
+        return head
+
+    return head.next
 
 print("After Deleting Node at Start:")
 deleteNodeAtStart(node1)
 
 def deleteNodeAtEnd(head):
+
+    if head is None:
+        return head
+    if head.next is None:
+        printLinkedList(head.next)
+        return head.next
     currentNode = head
 
     while currentNode.next.next:
@@ -95,6 +108,6 @@ def deleteNodeAtEnd(head):
     printLinkedList(head)
 
 print("After Deleting Node at End:")
-deleteNodeAtEnd(node1)
+deleteNodeAtEnd(node)
 
 
